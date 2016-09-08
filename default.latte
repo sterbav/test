@@ -1,0 +1,70 @@
+{block pageTitle}Dárkový poukaz na půjčení vozítka Segway | segway-rent.cz{/block}   
+{block pageDescription}Dopřejte svým blízkým nezapomenutelný zážitek s vozítkem Segway v Praze. Nejlepší ceny, originální dárek pro každého! | segway-rent.cz{/block} 
+{block pageKeywords}segway vozítka dárek, segway vozítka půjčovna voucher, segway rent praha voucher online, vyjížďky transportérů segway poukaz, segway jako dárek{/block}
+{block content}
+    <div id="rezervace" class="container">
+        {* FLASHMESSAGES *}
+        {if count($flashes) > 0}
+            <div class="flashMessages">
+                <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {$flash->message}
+                </div>
+            </div>
+        {/if}
+       
+        <h1>{_"Rezervace jízdy na Segway v Praze"}</h1>
+        
+        <div class="navigace">
+            <div class="ico active">1</div>
+            <div class="text text1">{_"Výběr dne a počtu lidí"}</div>
+            <div class="sep">&gt;</div>
+            <div class="ico">2</div>
+            <div class="text text2">{_"Výběr dne a počtu lidí"}</div>
+            <div class="sep">&gt;</div>
+            <div class="ico">3</div>
+            <div class="text text3">{_"Platba"}</div>
+            <div class="clearfix"></div>
+        </div>
+        
+        {form krokJednaForm}
+            <div class="datumVolba">
+                <p class="strong">{_"Zvolte si datum"}</p>
+                <div class="datumInput">{input Datum}</div>
+            </div>
+            <div class="osobyVolba">
+                <div class="title">{_"Počet osob"}</div>
+                <ul>
+                    {for $i = 1; $i <= 20; $i++}
+                        <li>
+                            <a href="#" data-osob="{$i}" class="{if $i == $pocetLidi}active{/if} {if $i < $pocetLidi}check{/if}">
+                                <div class="img"></div>
+                                <span class="info">{$i}</span>
+                            </a>
+                        </li>
+                    {/for}
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="sleva">
+                {_"Množstevní sleva 20% pro 5 osob a více"}
+            </div>
+            {input Submit}
+        {/form}
+        
+        <div class="tipBox">
+            <div class="ico pull-left">
+                <img src="{$basePath}/images/ico_people2.png" alt="{_"Rádi byste individuální jízdu?"}" /> 
+            </div>
+            <div class="right-col pull-right">
+                <p class="big strong">{_"Rádi byste individuální jízdu?"}</p>
+                <div class="clearfix"></div>
+                <div class="info pull-left">
+                    {!$texts->get('rezervace-krok1-info-box')}
+                </div>
+                <a href="{link Kontakt:default}#contactForm" class="btnObjednat pull-right">{_"Kontaktuje nás"}</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{/block}
