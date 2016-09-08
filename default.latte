@@ -4,6 +4,7 @@
 {block content}
     <div id="rezervace" class="container">
         {* FLASHMESSAGES *}
+	Test
         {if count($flashes) > 0}
             <div class="flashMessages">
                 <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">
@@ -68,3 +69,4 @@
         </div>
     </div>
 {/block}
+
